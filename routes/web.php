@@ -58,13 +58,25 @@ Route::any('/missindex','MissController@missindex');
 Route::any('/missexit','MissController@missexit');
 
 
+//微信缓存
+Route::any('/indexa','WechatController@indexa');
+//微信用户获取
+Route::any('/wechat_add','WechatController@wechat_add');
+Route::any('/wechat_list','WechatController@wechat_list');
+//网友授权
+Route::any('/wechat_login','WechatController@wechat_login');
 
 
+//get请求
+Route::any('/get','WechatController@get');
+//post请求
+Route::any('/post','WechatController@post');
 
 
-
-
-
+//标签管理
+Route::any('/tag_list','Tagcontroller@tag_list');
+Route::any('/add_tag','TagController@add_tag');
+Route::post('/do_add_tag','TagController@do_add_tag');
 
 Auth::routes();
 

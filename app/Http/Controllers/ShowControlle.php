@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ArticleModel;
-class Showcontroller extends Controller
+class ShowController extends Controller
 {
 	//文章添加
      public function show(Request $request){
