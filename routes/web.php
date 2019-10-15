@@ -81,3 +81,5 @@ Route::post('/do_add_tag','TagController@do_add_tag');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::any('/addls','IndexController@addls');

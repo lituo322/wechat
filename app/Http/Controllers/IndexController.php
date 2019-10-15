@@ -148,4 +148,8 @@ class IndexController extends Controller
 	  	$data = session()->all();
 
 	  }
+
+	  public function addls(){
+	  	echo 1;
+	  }
 }
