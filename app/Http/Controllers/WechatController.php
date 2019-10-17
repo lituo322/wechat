@@ -73,4 +73,8 @@ class WechatController extends Controller
     	var_dump($result);
     	curl_close($curl);
     }
+
+    public function aadd(){
+      
+    }
 } 

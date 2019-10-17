@@ -67,19 +67,25 @@ Route::any('/wechat_list','WechatController@wechat_list');
 Route::any('/wechat_login','WechatController@wechat_login');
 
 
+
 //get请求
 Route::any('/get','WechatController@get');
 //post请求
 Route::any('/post','WechatController@post');
+Route::any('/aadd','WechatController@aadd');
+
+
+Route::any('/event','EventController@event');
 
 
 //标签管理
 Route::any('/tag_list','Tagcontroller@tag_list');
 Route::any('/add_tag','TagController@add_tag');
 Route::post('/do_add_tag','TagController@do_add_tag');
+//微信素材文件上传
+Route::any('/uploads','ResourceController@uploads');
+Route::any('/do_uploads','ResourceController@do_uploads');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::any('/addls','IndexController@addls');
