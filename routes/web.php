@@ -85,6 +85,12 @@ Route::post('/do_add_tag','TagController@do_add_tag');
 //微信素材文件上传
 Route::any('/uploads','ResourceController@uploads');
 Route::any('/do_uploads','ResourceController@do_uploads');
+Route::any('/source_list','ResourceController@source_list');
+
+//菜单列表
+Route::any('/menu_list','MenuController@menu_list');
+Route::any('/create_menu','MenuController@create_menu');
+
 
 Auth::routes();
 

@@ -15,14 +15,12 @@
              <td>视频</td>
              <td>缩略图</td>
           </tr>
-          @foreach($data as $v)
+          @foreach($res as $v)
           <tr>
-             <td>{{$v['image']}}</td>
-             <td>{{$v['voice']}}</td>
-             <td>{{$v['video']}}</td>
-             <td>{{$v['thumb']}}</td>
+             <td>{{ $v->id }}</td>
+             
           </tr>
-         @endforeanh
+         @endforeach
 	   </form>
 	</table>	
 	<conter>

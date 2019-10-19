@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tools\Tools;
+use App\Models\Resource;
+use Illuminate\Support\Facades\Storage;
 class ResourceController extends Controller
 {
      public $tools;
@@ -17,7 +19,7 @@ class ResourceController extends Controller
       return view('Resource.uplodes');
     }
 
-    public function do_uploads(){
+    public function do_uploads(Request $request){
      $req = $this->request->all();
      // dd($req);
      if(!$this->request->hasFile('rsource')){
@@ -42,9 +44,9 @@ class ResourceController extends Controller
      	$data['description']=json_encode($data['description'],JSON_UNESCAPED_UNICODE);
      }
      $re = $this->tools->wechat_curl_file($url,$data);
-     dd($re);
+     //dd($re);
      $result = json_decode($re,1);
-     if(!isset($result['media_id'])){
+     if(!isset($result['errcode'])){
      	Resource::insert([
                'media_id'=>$result['media_id'],
                'type'=>$type_arr[$req['type']],
@@ -52,14 +54,14 @@ class ResourceController extends Controller
                'addtime'=>time()
      		]);
      }
-    return redorect('/source_list');
+    return redirect('/source_list');
     }
 
 
     //展示
-    public function source_list(){
+    public function source_list(Request $request){
     	$req=$request->all();
-    	$url="https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=".$this->tools->indexa().'&type='.$req['type'];
+    	$url="https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=".$this->tools->indexa();
         $data=[
            "type"=>'image',
            "offset"=>'0',
@@ -68,7 +70,7 @@ class ResourceController extends Controller
         $re=$this->tools->curl_post($url,json_encode($data,JSON_UNESCAPED_UNICODE));
         $result=json_decode($re,1);
         $res=Resource::all();
-        return view('index.resoure.sourceList',['res'=>$res]);
+        return view('Resource.sourceList',['res'=>$res]);
     }
 
     public function clear_api(){
